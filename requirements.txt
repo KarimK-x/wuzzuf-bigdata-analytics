@@ -1,0 +1,8 @@
+scrapy
+selenium
+pandas
+spacy
+plotly
+matplotlib
+seaborn
+streamlit

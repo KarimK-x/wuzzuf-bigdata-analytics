@@ -1,0 +1,2 @@
+"""Skill extraction example module."""
+

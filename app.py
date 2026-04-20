@@ -134,6 +134,22 @@ def main():
         st.title("Analytics Dashboard")
         st.markdown("Deeper insights into the job market data")
         st.divider()
+
+        st.markdown("### Dashboard Map")
+        st.caption("Use these links to jump to a section.")
+        st.markdown(
+            """
+            - [Overview](#section-overview)
+            - [Experience Levels](#section-experience-levels)
+            - [Role and Location Patterns](#section-role-and-location-patterns)
+            - [Skills Deep Dive](#section-skills-deep-dive)
+            - [Company Hiring Trends](#section-company-hiring-trends)
+            """
+        )
+        st.divider()
+
+        st.markdown("<div id='section-overview'></div>", unsafe_allow_html=True)
+        st.subheader("Overview")
         
         col1, col2 = st.columns(2)
         
@@ -149,6 +165,10 @@ def main():
             fig_cat = px.bar(top_grp_df, x='Job Group', y='Count', 
                             color='Count', color_continuous_scale='Blues')
             st.plotly_chart(fig_cat, use_container_width=True)
+
+        st.divider()
+        st.markdown("<div id='section-experience-levels'></div>", unsafe_allow_html=True)
+        st.subheader("Experience Levels")
             
         st.subheader("Total Representation by Experience Level (All Jobs)")
         levels = [
@@ -166,6 +186,10 @@ def main():
         st.subheader("Heatmap of Career Levels (All Jobs)")
         fig_heatmap = pt.plot_heatmap_all_jobs(df_grouped, levels)
         st.pyplot(fig_heatmap)
+
+        st.divider()
+        st.markdown("<div id='section-role-and-location-patterns'></div>", unsafe_allow_html=True)
+        st.subheader("Role and Location Patterns")
 
         st.subheader("Most Common Needed Jobs")
         fig_job_counts = pt.plot_job_counts(df)
@@ -190,6 +214,10 @@ def main():
         st.subheader("Education level by job title")
         fig_education_level_by_job_title = pt.plot_education_level_by_job_title_group(df)
         st.pyplot(fig_education_level_by_job_title)
+
+        st.divider()
+        st.markdown("<div id='section-skills-deep-dive'></div>", unsafe_allow_html=True)
+        st.subheader("Skills Deep Dive")
         
         st.subheader("Top skills")
         fig_top_skills = pt.plot_skills("public/Mohamed/skill_counts.csv")
@@ -202,6 +230,10 @@ def main():
         st.subheader("Top skills for each job")
         fig_top_skills_for_each_job = pt.plot_treemap("public/Mohamed/job_skill_tables.xlsx")
         st.plotly_chart(fig_top_skills_for_each_job, use_container_width=True)
+
+        st.divider()
+        st.markdown("<div id='section-company-hiring-trends'></div>", unsafe_allow_html=True)
+        st.subheader("Company Hiring Trends")
 
         st.subheader("Number of job postings")
         fig_num_of_job_postings = pt.plot_num_of_job_postings(df)

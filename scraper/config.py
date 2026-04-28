@@ -1,2 +1,0 @@
-"""Scraper configuration values."""
-
